@@ -13,11 +13,11 @@ Name:Gabriel Vallarta Ramírez                   Career: ITC             Group:4
 """
 
 
-def adding_price(subtotal,price):
+def adding_price(subtotal,price):#This function adds the new price to the total
     total=subtotal+price
     return total
 
-def reward(subtotal):
+def reward(subtotal): # This function checks if the person gets points
     points=0
     if(subtotal>=200):
         points=20
@@ -35,12 +35,12 @@ def main():
     products=0
     while finish_order==False:
         print(f"""
----Welcome to the Coffe Shop!---
+---Welcome to Coffe World!---
       
-1.Americano $35.50
-2.Latte     $50.00
-3.Baguette  $70.00
-4.Cookie    $20.00
+1.Hot chocolate $35.50
+2.Vanilla latte     $50.00
+3.Chai latte  $70.00
+4.Sandwitch    $20.00
 5.Finalize order
 -------------------------------
 """)
