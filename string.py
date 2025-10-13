@@ -1,0 +1,15 @@
+course = "  Python programming"
+course_capital=course.upper()
+print(course.upper())
+print(course.lower())
+print(course.title())
+print(course.strip())
+print(course.rstrip())
+print(course.find("Pro"))
+print(course.find("pro"))
+print(course.replace("P","j"))
+words=course.split(" ")
+print(words)
+print("Pro" in course)
+"el len cuenta los espacios"
+print(len(course))
