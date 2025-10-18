@@ -1,23 +1,28 @@
 
-class Board:
-    row=[]
-    blank=[]
+
+def fill_board(rowsn,colsn):
+    rows=[]
     matrix=[]
-    def __init__(self,rows,cols):
-        
-        for j in range(rows+1):
-            self.blank.append(" ")
-            self.row.append([])
-        for i in range(cols):
-            if i==0:
-                self.matrix.append(self.blank)
-            self.matrix.append(self.row)
+    for j in range(rowsn+1):
+        rows.append([])
+    for i in range(colsn):
+        matrix.append(rows)
+    return matrix
             
-    def showBoard(self):
-        for i in range(0,len(self.matrix),1):
-            for j in range(0,len(self.row),1):
-                print(self.matrix[i][j],end="")
-            print()
+def showBoard(m):
+    n=len(m)
+    for i in range(0,n,1):
+        for j in range(len(m[0])):
+            print(m[i][j],end="")
         print()
+    print()
             
-    
+def go_token(c,m,ficha):
+    for i in range(len(m)-1):
+        if m[i+1][c]!="[]" and m[i][c]==[]:
+            if ficha=="x":
+                m[i][c]="x"
+            else:
+                m[i][c]="o"
+        
+
