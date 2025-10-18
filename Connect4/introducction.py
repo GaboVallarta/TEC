@@ -2,7 +2,7 @@
 from game import cls
 
 import time
-import sys
+
 
 
 def name(x):
@@ -19,7 +19,7 @@ def one_or_two():
         cls()
        
         key=""
-        print("Are you gonna play alone or with a friend?")
+        print("Are you gonna play with a friend?")
         
 
         x=int(input("1. Yes\n2. No\n"))
@@ -56,4 +56,9 @@ def intro():
         x=2
         name_two=name(x)
         players.append(name_two)
+    elif c==2:
+        pass
+    else:
+        print(" Invalid answere, you are going to play with one player")
+        time.sleep(2)
     return players
