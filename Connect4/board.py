@@ -70,7 +70,7 @@ def right(board,y_pos,x_pos, ficha):
 
 def check(board,y_pos,x_pos,ficha):
     c=False
-    if(up(board,y_pos,x_pos,ficha)+down(board,y_pos,x_pos,ficha) >3 or left(board,y_pos,x_pos,ficha)+right(board,y_pos,x_pos,ficha)>3 or diag_di(board,y_pos,x_pos,ficha)>3 or diag_id(board,y_pos,x_pos,ficha)>3):
+    if((up(board,y_pos,x_pos,ficha)+down(board,y_pos,x_pos,ficha))-1>3 or (left(board,y_pos,x_pos,ficha)+right(board,y_pos,x_pos,ficha)-1)>3 or (diag_di(board,y_pos,x_pos,ficha)-1)>3 or (diag_id(board,y_pos,x_pos,ficha)-1)>3):
         c=True
     return c
     """aquí hay break, no sé si se pueda usar no recuredo la verdad"""

@@ -17,13 +17,19 @@ def turno(name, tokens, board,color):
     
     tokens-=1
     correct=True
+    start=0
+    end=0
     while(correct):
 
         if not name== "Computadora":
+            start=time.time()
             colum=(input(f"Enter the number of the colum to put a token: "))
+            
         else:
             colum=random.randint(1,7)
             print(f"Computre choosed: {colum}")
+            colum=str(colum)
+            """lo hago string para que tenga la función de is digit, más que nada para evitar hacer más condiciones"""
             time.sleep(2)
         if colum.isdigit():
             
@@ -36,7 +42,10 @@ def turno(name, tokens, board,color):
                 print("invalid answere, try again")
         else:
             print("invalid answere, try again")
-    r=[tokens,board,finish]
+    end=time.time()
+    t=end-start
+    r=[tokens,board,finish,t]
+    
     return r
 
             

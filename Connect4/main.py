@@ -10,6 +10,7 @@ def main():
     board= fill_board(6,7)
     player_s=intro()
     token_s=[24,24]
+    times=[0,0]
     color=["[x]","[0]"]
     if len(player_s)==1:
         player_s.append("Computadora")
@@ -17,12 +18,14 @@ def main():
     print(player_s)
     end=False
     cont=0
+    
     while(end==False):
         result=turno(player_s[cont],token_s[cont],board,color[cont])
         token_s[cont]=result[0]
         board=result[1]
         end=result[2]
+        times[cont]+=result[3]
         if end==False:cont=(cont+1)%2
     showBoard(board)
-    print(f"{player_s[cont]} ha ganado")
+    print(f"{player_s[cont]} ha ganado con un tiempo de {times[cont]:.2f} segundos")
 main()
