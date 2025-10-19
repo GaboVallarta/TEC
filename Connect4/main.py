@@ -6,7 +6,6 @@ from game import *
 from introducction import *
 
 
-
 def scoreboard(save):
     # Leer archivo
     scores = []
