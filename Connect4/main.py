@@ -34,13 +34,30 @@ def scoreboard(save):
             file.write(f"{person[0]},{person[1]}\n")
             print(f"Wrote: {person[0]},{person[1]}")
 
- 
+def show_score():
+    score=[]
+    with open("scores.csv","r") as file:
+        
+        for person in file:
+            lista=person.strip().split(",")
+            score.append(lista)
+    print(f"Names:\t\tScore:")
+    for i in range(len(score)):
+        for j in range(len(score[0])):
+            print(score[i][j], end="\t\t")
+        print()
+        
+    enter=input("press enter to continue")
+    cls()
+
+
 
  
-def main():
+def play():
     
     board= fill_board(6,7)
     player_s=intro()
+    
     token_s=[24,24]
     times=[0,0]
     color=["[x]","[0]"]
@@ -69,4 +86,33 @@ def main():
     
 
     
+def main():
+    game=True
+    while(game):
+        print(f"""Welcome to connect 4, what do you want to do?
+1.Play
+2.Check scoreboard
+3.exit
+          """)
+        choose=input()
+        if choose.isdigit():
+            choose=int(choose)
+            if choose==1:
+                play()
+            elif choose==2:
+                cls()
+                show_score()
+            elif choose==3:
+                game=False
+            else:
+                print("Invalid option, try again")
+                time.sleep(1)
+                cls()
+        else:
+            print("Invalid option, try again")
+            time.sleep(1)
+            cls()
+
+
+
 main()

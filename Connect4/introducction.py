@@ -22,14 +22,23 @@ def one_or_two():
         print("Are you gonna play with a friend?")
         
 
-        x=int(input("1. Yes\n2. No\n"))
-        if(x==1 or x==2):
-            choice=x
-            segundo=False
+        x=input("1. Yes\n2. No\n")
+        
+        if x.isdigit():
+            x=int(x)
+            if(x==1 or x==2):
+                choice=x
+                segundo=False
+            else:
+                print("Invalid option, try again")
+                time.sleep(1)
+                cls()
         else:
             print("Invalid option, try again")
             time.sleep(1)
             cls()
+
+       
     return choice
 
 def introduction():
