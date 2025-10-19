@@ -8,29 +8,36 @@ from introducction import *
 
 
 def scoreboard(save):
-    with open(r"scores.csv","r") as file:
-        content=file.readlines()
-    print(content)
-    scores=[]
-    for lines in content:
-        person=lines.strip().split(",")
-        scores.append(person)
-    
-    for i in range(0,len(scores)-1):
-        if save>scores[i]:
-            take=scores[i]
-            scores[i]=save
-            save=take
-            
-    if len(scores)>5: 
-        """falta comparar los valores realmente, el promedi con promedio, no promedio con lista xd"""
-        send=scores[:5]
+    # Leer archivo
+    scores = []
+    with open("scores.csv", "r") as file:
+        for line in file:
+            parts = line.strip().split(",")
+            if len(parts) == 2:
+                scores.append([parts[0], int(parts[1])])
 
-    with open(r"scores.csv","w") as file:
-        for i in range(0,5):
-            file.write(send[i])
+    # Insertar nuevo score en orden descendente
+    inserted = False
+    for i in range(len(scores)):
+        if save[1] > scores[i][1]:
+            scores.insert(i, save)
+            inserted = True
+            break
+    if not inserted:
+        scores.append(save)
 
+    # Mantener solo los 5 mejores
+    scores = scores[:5]
 
+    # Reescribir todo el archivo
+    with open("scores.csv", "w") as file:
+        for person in scores:
+            file.write(f"{person[0]},{person[1]}\n")
+            print(f"Wrote: {person[0]},{person[1]}")
+
+ 
+
+ 
 def main():
     
     board= fill_board(6,7)
@@ -57,7 +64,7 @@ def main():
     
     score=(24-token_s[cont])/times[cont]
 
-    save=str(player_s[cont])+","+str(score)+"\n"
+    save=[player_s[cont],score]
     
     scoreboard(save)
     
