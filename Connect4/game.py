@@ -35,7 +35,7 @@ def turno(name, tokens, board,color):
             
             colum=int(colum)
             colum-=1
-            if colum<len(board[0]) and colum>=0:
+            if colum<len(board[0]) and colum>=0 and board[0][colum]=="[ ]":
                 finish=go_token(colum,board,color)
                 correct=False
             else:

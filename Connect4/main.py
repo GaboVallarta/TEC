@@ -5,6 +5,32 @@ from board import *
 from game import *
 from introducction import *
 
+
+
+def scoreboard(save):
+    with open(r"scores.csv","r") as file:
+        content=file.readlines()
+    print(content)
+    scores=[]
+    for lines in content:
+        person=lines.strip().split(",")
+        scores.append(person)
+    
+    for i in range(0,len(scores)-1):
+        if save>scores[i]:
+            take=scores[i]
+            scores[i]=save
+            save=take
+            
+    if len(scores)>5: 
+        """falta comparar los valores realmente, el promedi con promedio, no promedio con lista xd"""
+        send=scores[:5]
+
+    with open(r"scores.csv","w") as file:
+        for i in range(0,5):
+            file.write(send[i])
+
+
 def main():
     
     board= fill_board(6,7)
@@ -28,4 +54,13 @@ def main():
         if end==False:cont=(cont+1)%2
     showBoard(board)
     print(f"{player_s[cont]} ha ganado con un tiempo de {times[cont]:.2f} segundos")
+    
+    score=(24-token_s[cont])/times[cont]
+
+    save=str(player_s[cont])+","+str(score)+"\n"
+    
+    scoreboard(save)
+    
+
+    
 main()
